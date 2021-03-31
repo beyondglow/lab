@@ -76,9 +76,9 @@ public class CipherAsymmetric {
     }
 	
 	public static void main(String[] args) throws Exception {
-//		String encryptStr = encrypt("a=123&b=456");
-//		System.out.println("加密内容"+encryptStr);
-		String decryptStr = decrypt("Df9MBuagfSroBCzq1CzHsJLmePOV0VItG9thaglELhWkIOR4r58Rd40ggH8q+CV+n4sB2XIV%2BYsl5N53VXLx3yOZ2YBwP6agw241fk/oBrBYAEetvcqXFfCCVRKjAG6fKJ1fiwZqeKGpaP1jY7nh4A==");
+		String encryptStr = encrypt("a=123&b=456");
+		System.out.println("加密内容"+encryptStr);
+		String decryptStr = decrypt("RsuU3PB3aPuk3wDmtLPQTw==");
 		System.out.println("解密内容:" + decryptStr);
 	}
 	
