@@ -12,9 +12,7 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.crypto.Cipher;
-
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.ByteArrayOutputStream;
@@ -184,9 +182,9 @@ public class RSAUtils {
     public static void main(String[] args) throws Exception{
         Map<String, String> keyMap = RSAUtils.createKeys(1024);
         String  publicKey = keyMap.get("publicKey");
-        String  privateKey = "MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAJxmWQdpI3R/DcJYaDNy4944o900od1zadHootdrOGHMWF7vw2oyuGzI1N/frmxoVLaUAMrcLMBLMfhPRtP4acnvuOgM4/7RKq5scrAAi/znSVPRDFL5165QeDb64diF2EjDk0KZnRKQ1qXDyKA/XJL7ZMQhhqfeVqQ8G9khKpGzAgMBAAECgYEAj+5AkGlZj6Q9bVUez/ozahaF9tSxAbNs9xg4hDbQNHByAyxzkhALWVGZVk3rnyiEjWG3OPlW1cBdxD5w2DIMZ6oeyNPA4nehYrf42duk6AI//vd3GsdJa6Dtf2has1R+0uFrq9MRhfRunAf0w6Z9zNbiPNSd9VzKjjSvcX7OTsECQQD20kekMToC6LZaZPr1p05TLUTzXHvTcCllSeXWLsjVyn0AAME17FJRcL9VXQuSUK7PQ5Lf5+OpjrCRYsIvuZg9AkEAojdC6k3SqGnbtftLfGHMDn1fe0nTJmL05emwXgJvwToUBdytvgbTtqs0MsnuaOxMIMrBtpbhS6JiB5Idb7GArwJAfKTkmP5jFWT/8dZdBgFfhJGv6FYkEjrqLMSM1QT7VzvStFWtPNYDHC2b8jfyyAkGvpSZb4ljZxUwBbuh5QgM4QJBAJDrV7+lOP62W9APqdd8M2X6gbPON3JC09EW3jaObLKupTa7eQicZsX5249IMdLQ0A43tanez3XXo0ZqNhwT8wcCQQDUubpNLwgAwN2X7kW1btQtvZW47o9CbCv+zFKJYms5WLrVpotjkrCgPeuloDAjxeHNARX8ZTVDxls6KrjLH3lT";
-        System.out.println("公钥: \n\r" + publicKey);
-        System.out.println("私钥： \n\r" + privateKey);
+        String  privateKey = keyMap.get("privateKey");
+        System.out.println("公钥: \r" + publicKey + "\n");
+        System.out.println("私钥： \r" + privateKey + "\n");
 
         System.out.println("公钥加密——私钥解密");
         String str = "站在大明门前守卫的禁卫军，事先没有接到\n" +
@@ -197,11 +195,11 @@ public class RSAUtils {
                 "的御史和御前侍卫“大汉将军”也不见踪影，不免\n" +
                 "心中揣测，互相询问：所谓午朝是否讹传？";
         System.out.println("\r明文：\r\n" + str);
-        System.out.println("\r明文大小：\r\n" + str.getBytes().length);
+        System.out.println("\r明文大小：\r\n" + str.getBytes().length + "\r\n");
         String encodedData = RSAUtils.publicEncrypt(str, RSAUtils.getPublicKey(publicKey));
-        System.out.println("密文：\r\n" + encodedData);
-        String decodedData = RSAUtils.privateDecrypt("X4hHPa9NjPd5QJGPus+4+hWmOzbWg7oCJ1+Vc+7dHW81nEhkYnJpFyV5xcDkg70N2Mym+YAJ1PvYY9sQWf9/EkUE61TpUKBmDaGWLjEr3A1f9cKIelqLKLsJGdXEOr7Z55k4vYFvA7N3Vf5KQo3NrouvIT4wR+SjH4tDQ8tNh3JH8BvXLtXqGa2TCK2z1AzHNgYzcLCrqDasd7UDHRPZPiW4thktM/whjBn0tU9B/kKjAjLuYttKLEmy5nT7v7u16aZ6ehkk+kzvuCXF%2B3RsqraISDPbsTki2agJyqsycRx3w7CvKRyUbZhFaNcWigOwmcbZVoiom+ldh7Vh6HYqDA==", RSAUtils.getPrivateKey(privateKey));
-        System.out.println("解密后文字: \r\n" + decodedData);
+        System.out.println("加密后密文：\r\n" + encodedData + "\r\n");
+        String decodedData = RSAUtils.privateDecrypt(encodedData, RSAUtils.getPrivateKey(privateKey));
+        System.out.println("解密后明文: \r\n" + decodedData);
 
     }
 }
