@@ -22,7 +22,7 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
  * @author yh
  * @date 2021年3月31日 下午2:31:21
  */
-public class AesEncryptUtils {
+public class AesUtils {
 
 	//算法名
 	public static final String KEY_NAME = "AES";
